@@ -1,0 +1,111 @@
+@import url(./var.css);
+.navbar{
+    /* background: var(--orange); */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--Grayish-blue);
+    padding: 2rem 0;
+    margin: 0 25rem;
+}
+.links{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+}
+.logo{
+    color: var(--Black);
+    font-size: 3rem;
+    font-weight: 700;
+    font-family: 'Kumbh Sans';
+
+}
+.navlinks ul {
+    list-style: none;
+    display: flex;
+    gap: 2.6rem;
+    padding-left: 8rem;
+}
+/* .nav_link{
+
+} */
+.nav_link a{
+    text-decoration: none;
+    color: var(--Dark-grayish-blue);
+    font-size: 1.6rem;
+    padding-bottom: 4.6rem;
+    font-weight: 300;
+
+}
+.nav_link a:hover{
+    border-bottom: 5px solid var(--orange);
+    color: var(--Black);
+    /* transition: 2s ease; */
+}
+.nav_img{
+    cursor: pointer;
+    /* width: 4.7rem; */
+    height: 3rem;
+    display: flex;
+    /* flex-direction: row;*/
+    align-items: center;
+    justify-content: center; 
+    gap: 3rem;
+}
+.nav_img img{
+    /* height: 70%; */
+}
+.cart{
+    height: 2rem;
+    cursor: pointer;
+}
+/* .cart:hover g, .cart:hover path{
+    background: var(--Black);
+    filter: none;
+    fill: var(--Black);
+} */
+ 
+.nav_img .avatar{
+    height: 5rem;
+    border: 2px solid var(--White) ;
+}
+.nav_img .avatar:hover{
+    border-radius: 50%;
+    border: 2px solid var(--orange);
+}
+[data-notification-count] {
+    position: relative;
+  }
+  [data-notification-count]::before {
+    content: attr(data-notification-count);
+    position: absolute;
+    top: -0.75em;
+    right: -0.75em;
+    width: 1.5em;
+    height: 1.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: var(--orange);
+    color: white;
+  }
+
+  .cart-basket {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    position: absolute;
+    /* top: -1rx; */
+    /* right: -1px; */
+    margin-left: -5rem;
+    width: 15px;
+    height: 15px;
+    color: #fff;
+    background-color: var(--orange);
+    border-radius: 50%;
+  }
