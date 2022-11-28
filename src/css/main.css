@@ -15,7 +15,7 @@ main {
 }
 .main_image {
   cursor: pointer;
-  width: 45rem;
+  width: 40rem;
   border-radius: 2rem;
 }
 .img_thumbnail {
@@ -35,11 +35,14 @@ main {
 .thumbnail_images {
   display: flex;
   justify-content: space-between;
-  align-items: stretch;
+   align-items: stretch; 
   padding-top: 1.7rem;
 }
 
 /*counter Div  */
+.counter_div{
+  width: 80%;
+}
 .counter_div h2 {
   font-weight: 700;
   font-size: 5rem;
@@ -122,7 +125,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 55%;
+  width:29rem;
   color: var(--White);
   background: var(--orange);
   font-size: 1.8rem;
@@ -233,4 +236,134 @@ main {
 }
 .cart_close{
   display: none;
+}
+
+@media only screen and (max-width: 768px) {
+ 
+  main{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    gap: 0;
+  /* width: 100%; */
+
+  }
+  .image_div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .main_image {
+    cursor: pointer;
+    align-self: center;
+    width: 20rem;
+    margin-left: 1.8rem;
+    border-radius: 1rem;
+  }
+  .img_thumbnail {
+    cursor: pointer;
+    width: 8rem;
+    display: flex;
+    /* flex-direction: fle; */
+    align-items: flex-start;
+    gap: .6rem;
+    border-radius: .5rem;
+  }
+  .thumbnail_images {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.2rem;
+    align-items: flex-start;
+    /* padding-top: 1.7rem; */
+  }
+  .main_image {
+    cursor: pointer;
+    width: 90%;
+    border-radius: 2rem;
+  }
+  .counter_div{
+    /* width: 80%; */
+    padding: 1rem 2rem;
+    width: 100%;
+    align-self: center;
+    text-align: start;
+  }
+  
+.counter_div h2 {
+  width: 100%;
+  max-width: max-content;
+}
+.paragraph {
+  color: var(--Dark-grayish-blue);
+  font-size: 1.8rem;
+  max-width: none;
+  width: 100%;
+
+  font-weight: 300;
+  word-spacing: 0.4rem;
+}
+.details {
+  font-size: 1.4rem;
+  letter-spacing: 0.3rem;
+  font-weight: 600;
+  color: var(--orange);
+  padding-bottom: 0.3rem;
+  margin-top: 7rem;
+}
+.price_div{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.price {
+  font-size: 2.5rem;
+  font-weight: 700;
+  padding-top: 3rem;
+  align-self: center;
+  padding-bottom: 1.5rem;
+}
+.price span {
+  padding: 0;
+  color: var(--orange);
+  background: var(--Pale-orange);
+  font-size: 1.5rem;
+  border-radius: 0.3rem;
+  padding: 0.3rem 0.6rem;
+  text-align: center;
+}
+.price_crossed {
+  /* padding-top: 2rem; */
+  color: var(--Grayish-blue);
+  font-size: 1.9rem;
+  font-weight: 500;
+  text-decoration: line-through;
+  font-weight: 700;
+}
+.cart_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  margin-left: 2rem;
+
+  gap: 1rem;
+  width: 30rem;
+  padding-bottom: 3rem;
+}
+ .add_minus{
+  width: 100%;
+ }
+ 
+
+.add_to_cart {
+  width: 100%;
+ 
+}
+.add_to_cart:hover {
+ 
+}
+
 }

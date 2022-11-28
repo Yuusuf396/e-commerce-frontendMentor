@@ -1,10 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import '../css/nav.css'
 import '../css/main.css'
 import cart from  '../images/icon-cart.svg'
 import avatar from '../images/image-avatar.png'
 import logo from '../images/logo.svg'
 import Cart from './Cart'
+import harmburger from '../images/icon-menu.svg'
+import close from '../images/icon-close.svg'
+import {Hooks} from '../components/Hooks'
+
 const links = [
   'Collections',
   'Men',
@@ -16,25 +20,37 @@ const links = [
 
 export const Nav = ({ cartProductQuantity, setCartProductQuantity }) => {
   const [openCart, setOpenCart] = useState(false);
+  const [hamburger, setHamburger] = useState(false)
+  const ref = useRef();
   
+Hooks(ref,() => setHamburger(false));
 
   //   function oplen() {
        
   //     setOpenCart(openCart => !openCart);
   // }
-  // let check = openCart ? ' cart_close' : ' ';
+  const handleHamburger = () => {
+    setHamburger(!hamburger);
+    console.log('object');
+  };
+
+  let check = hamburger ? ' active_tab' : '';
 
     const listItems = links.map(link =>
       <li className='nav_link'><a href='#r'> {link}</a></li>
     );
   return (
-      <>
-      <nav className='navbar' >
+    <>
+      <nav className='navbar'  ref={ref} >
         <div className='links'>
+          <div className='hamburger' onClick={handleHamburger}>
+            <img src={harmburger} alt='' />
+          </div>
           <div className='logo'>
             <img  alt='' src={logo} />
           </div>
-          <div className='navlinks'>
+          <div className={`navlinks ${check}`}>
+            <img className='close_btn' src={close} alt='' onClick={()=>setHamburger(!hamburger)} />
             <ul>{listItems}</ul>
           </div>
         </div>
