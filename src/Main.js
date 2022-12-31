@@ -1,40 +1,48 @@
 import React ,{useState} from 'react'
-// import './css/main.css'
-import mainImg1 from './images/image-product-1.jpg'
-import mainImg2 from './images/image-product-2.jpg'
-import mainImg3 from './images/image-product-3.jpg'
-import mainImg4 from './images/image-product-4.jpg'
-
-import thumbnail1 from './images/image-product-1-thumbnail.jpg'
-import thumbnail2 from './images/image-product-2-thumbnail.jpg'
-import thumbnail3 from './images/image-product-3-thumbnail.jpg'
-import thumbnail4 from './images/image-product-4-thumbnail.jpg'
+import {Data} from './components/Data'
+import './css/main.css'
+ 
 
 import add from './images/icon-plus.svg'
 import minus from './images/icon-minus.svg'
+import arrowRight from './images/icon-next.svg'
+import arrowLeft from './images/icon-previous.svg'
+import close from './images/icon-close.svg'
+ 
 
-import Cart from './components/Cart'
-// const mystyle = {
-//   color: " hsl(26, 100%, 55%)",
-//   // color: "hsl(25, 100%, 94%)",
-//   opacity: "70%",  
-//   pointer_events : "none"
-// };
+
+
+// import Cart from './components/Cart'
+ 
  
 export const Main = ({
   setCartProductQuantity,
  }) => {
   
-  const [btn, setBtn] =useState(false)
+  // const [image, setImage] =useState(0)
   const [count, setCount] = useState(0)
-  const [img, setImage] = useState(mainImg1)
-
+  const [lightbox, setLightbox] = useState(false)
+  const[main,setMain]=useState(0)
+  
+ 
   const handleAddToCart = () => {
     setCartProductQuantity (count);
     setCount(0);
   };
   const addCountHandler = () => {
     setCount(count + 1);
+  };
+  const changeWithSliderRight = () => {
+    if ( main === 3) {
+      return;  
+    }
+    setMain(main+1);
+  };
+  const changeWithSliderLeft = () => {
+    if (main === 0) {
+      return;  
+    }
+    setMain(main-1);
   };
   const reduceCountHandler = () => {
     if (count === 0) {
@@ -43,45 +51,64 @@ export const Main = ({
     setCount(count - 1);
   };
   function toggleActive1() {
-    if(btn)
-    setBtn(btn=>!btn)
-    setImage(mainImg1)
+    setMain(0)
   }
   function toggleActive2() {
-    if(btn)
-    setBtn(btn=>!btn)
-    setImage(mainImg2)
+    setMain(1)
   } function toggleActive3() {
-    if(btn)
-    setBtn(btn=>!btn)
-    setImage(mainImg3)
-  } function toggleActive4() {
-    if(btn)
-    setBtn(btn=>!btn)
-    setImage(mainImg4)
+    setMain(2)
+  } function toggleActive4() { 
+    setMain(3)
   }
+  const lightboxFunc=()=>{
+    setLightbox(true)
+  }
+  const cancelLightbox=()=>{
+    setLightbox(false)
+  }
+ 
 
-
-  let check = btn ? ' active' : ' ';
-  return (
+ return (
     <div>
-      <main>
-        <div className='image_div'>
+      <main  >
+        <div  className={`image_div ${lightbox === true ?'lightbox_blur':''}`}>
               <div>
-                    <img className='main_image' src={img} alt='product' />
+                  <img className='main_image' src={Data[main].mainImg} alt='product' onClick={lightboxFunc}/>
               </div>
               <div className='thumbnail_images'>
-                <img className={`img_thumbnail ${check}`} alt='img_thumbnail' src={thumbnail1} onClick={toggleActive1}  /> 
-                <img className={`img_thumbnail ${check}`}  alt='img_thumbnail' src={thumbnail2} onClick={toggleActive2} />
-                    <img className='img_thumbnail' alt='img_thumbnail' src={thumbnail3} onClick={toggleActive3}  />
-                    <img className='img_thumbnail' alt='img_thumbnail' src={thumbnail4} onClick={toggleActive4}  /> 
+                  <img  className={`img_thumbnail ${main === 0 ? 'active':''}`}   alt='img_thumbnail' src={Data[0].thumbImg}  onClick={toggleActive1}  /> 
+                  <img className={`img_thumbnail ${main ===1 ? 'active':''}`}  alt='img_thumbnail' src={Data[1].thumbImg} onClick={toggleActive2}   />
+                  <img className={`img_thumbnail ${main ===2 ? 'active':''}`} alt='img_thumbnail' src={Data[2].thumbImg} onClick={toggleActive3}  />  
+                  <img className={`img_thumbnail ${main === 3 ? 'active':''}`}   alt='img_thumbnail'src={Data[3].thumbImg}   onClick={toggleActive4}   /> 
+                    
               </div>
         </div>
-        <div className='counter_div'>
-          <p className='details'>SNEAKER COMPANY</p>
-          <h2>Fall Limited Edition Sneakers</h2>
-          <p className='paragraph'>
-            These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.</p>
+        { lightbox &&
+          <div className='image_div lightbox'>
+            <img className='lightbox_close' src={close} alt='' onClick={cancelLightbox} />
+                
+              <div className='lightBox_div'>
+                <img className='arrow_left' alt='' src={arrowLeft} onClick={changeWithSliderLeft}/>
+                <img className='main_image' src={Data[main].mainImg} alt='product' />
+                <img className='arrow_right' alt='' src={arrowRight} onClick={changeWithSliderRight} />
+              </div>
+              <div className='thumbnail_images'>
+                  <img className={`img_thumbnail ${main === 0 ? 'active':''}`}   alt='img_thumbnail' src={Data[0].thumbImg} onClick={toggleActive1}  /> 
+                  <img className={`img_thumbnail ${main === 1 ? 'active':''}`}   alt='img_thumbnail' src={Data[1].thumbImg} onClick={toggleActive2}  />
+                  <img className={`img_thumbnail ${main === 2 ? 'active':''}`}   alt='img_thumbnail' src={Data[2].thumbImg} onClick={toggleActive3}  />  
+                  <img className={`img_thumbnail ${main === 3 ? 'active':''}`}   alt='img_thumbnail' src={Data[3].thumbImg} onClick={toggleActive4}  /> 
+                  
+              </div>
+        </div> 
+        }
+         
+       
+        <div   className={`counter_div ${lightbox === true ?'lightbox_blur':''}`}>
+            <p className='details'>SNEAKER COMPANY</p>
+            <h2>Fall Limited Edition Sneakers</h2>
+            <p className='paragraph'>
+              These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.
+            </p>
           <div className='price_div'>
             <p className='price'>$125.00 <span>50%</span></p>
             <p className='price_crossed'>$250.00</p>

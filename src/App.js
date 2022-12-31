@@ -4,6 +4,7 @@ import { useState } from 'react';
 // import './App.css';
 import Nav from './components/Nav';
 import Main from './Main';
+import Footer from './components/Footer';
 
 function App() {
   const [productQuantity, setProductQuantity] = useState(0);
@@ -11,11 +12,14 @@ function App() {
   return (
     <div className="App">
       <Nav cartProductQuantity={cartProductQuantity}
-        setCartProductQuantity={setCartProductQuantity } />
+        setCartProductQuantity={setCartProductQuantity } 
+      />
       {/* <Footer/> */}
       <Main  productQuantity={productQuantity}
         setProductQuantity={setProductQuantity}
-        setCartProductQuantity={setCartProductQuantity}/>
+        setCartProductQuantity={setCartProductQuantity}
+      />
+      <Footer/>
     </div>
   );
 }
