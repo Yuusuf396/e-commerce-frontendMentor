@@ -83,7 +83,7 @@ filter: blur(8px);
 
 /*counter Div  */
 .counter_div{
-  width: 80%;
+  width: 100%;
 }
 .counter_div h2 {
   font-weight: 700;
@@ -408,9 +408,7 @@ filter: blur(8px);
   width: 100%;
  
 }
-.add_to_cart:hover {
  
-}
 
 }
 
