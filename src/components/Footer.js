@@ -6,7 +6,7 @@ class Footer extends Component {
         <div>
             <div className="attribution">
                 Challenge by
-                <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">
+                <a href="https://www.frontendmentor.io?ref=challenge"  target="_blank">
                     Frontend Mentor
                 </a>Frontend Mentor. 
                 Coded by <a href="https://twitter.com/_Ayours">Adebayo Yuusuf</a>.
